@@ -25,7 +25,7 @@ public class JunitBingSearchTest {
     }
 
     @Test
-    public void shouldFindInGoogleCom() {
+    public void shouldFindInBingCom() {
         WebElement element = driver.findElement(By.name("q"));
         element.clear();
         element.sendKeys("Euro 2020");
