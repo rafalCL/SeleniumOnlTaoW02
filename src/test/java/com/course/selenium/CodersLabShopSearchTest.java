@@ -12,6 +12,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 import java.util.Random;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 public class CodersLabShopSearchTest {
     private WebDriver driver;
 
@@ -74,10 +77,19 @@ public class CodersLabShopSearchTest {
         }
     }
 
-    private String getRandomProductName(){
+    private String getRandomProductName() {
         String[] products = {"Mug", "T-Shirt", "Sweater", "Frame", "Cushion", "Notebook"};
         Random r = new Random(System.currentTimeMillis());
         String randomProduct = products[r.nextInt(products.length)];
         return randomProduct;
+    }
+
+    @Test
+    public void assertionExamples() {
+        Assert.assertTrue(3 == 3);
+        assertFalse(3 == 5);
+        String[] names = {"ala", "ola", "rupert"};
+        assertEquals(3, names.length);
+        assertEquals("alamakota", "alamakota");
     }
 }
