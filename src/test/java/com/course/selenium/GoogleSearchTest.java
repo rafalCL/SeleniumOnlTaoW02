@@ -17,7 +17,7 @@ public class GoogleSearchTest {
 //        System.setProperty("webdriver.ie.driver", "src/test/resources/drivers/IEDriverServer.exe");
 //        WebDriver driver = new InternetExplorerDriver();
         driver.manage().window().maximize();
-        driver.get("http://www.bing.com");
+        driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
         element.clear();
         element.sendKeys("Coderslab");
