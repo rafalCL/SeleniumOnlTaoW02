@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
+import java.util.Random;
 
 public class CodersLabShopSearchTest {
     private WebDriver driver;
@@ -55,5 +56,28 @@ public class CodersLabShopSearchTest {
                 Assert.fail("Element should NOT be in search results: " + elem.getText());
             }
         }
+    }
+
+    @Test
+    public void shouldFindRandomProduct() {
+        String randomProductName = getRandomProductName();
+        WebElement element = driver.findElement(By.name("s"));
+        element.clear();
+        element.sendKeys(randomProductName);
+        element.submit();
+
+        List<WebElement> searchResults = driver.findElements(By.cssSelector("article.product-miniature div.product-description h2.product-title a"));
+        for (WebElement elem : searchResults) {
+            if (!elem.getText().contains(randomProductName)) {
+                Assert.fail("Element should NOT be in search results: " + elem.getText());
+            }
+        }
+    }
+
+    private String getRandomProductName(){
+        String[] products = {"Mug", "T-Shirt", "Sweater", "Frame", "Cushion", "Notebook"};
+        Random r = new Random(System.currentTimeMillis());
+        String randomProduct = products[r.nextInt(products.length)];
+        return randomProduct;
     }
 }
